@@ -1,0 +1,19 @@
+pnl_warehouse:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: SYSADMIN
+      warehouse: PNL_WAREHOUSE_DBT_WH
+      database: BLUECREST_WAREHOUSE
+      schema: DEV
+      account: ''
+      user: ''
+    prod:
+      type: snowflake
+      role: SYSADMIN
+      warehouse: PNL_WAREHOUSE_DBT_WH
+      database: BLUECREST_WAREHOUSE
+      schema: PRD
+      account: ''
+      user: ''
