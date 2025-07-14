@@ -3,7 +3,7 @@ pnl_warehouse:
   outputs:
     dev:
       type: snowflake
-      role: SYSADMIN
+      role: ACCOUNTADMIN
       warehouse: PNL_WAREHOUSE_DBT_WH
       database: BLUECREST_WAREHOUSE
       schema: DEV
@@ -11,7 +11,7 @@ pnl_warehouse:
       user: ''
     prod:
       type: snowflake
-      role: SYSADMIN
+      role: ACCOUNTADMIN
       warehouse: PNL_WAREHOUSE_DBT_WH
       database: BLUECREST_WAREHOUSE
       schema: PRD
