@@ -1,0 +1,44 @@
+sources:
+  - name: pnl
+    database: bluecrest_staging
+    tables:
+      - name: transaction_value
+        columns:
+          - name: valuedate
+            data_type: date
+          - name: sourcesystem
+            data_type: varchar
+          - name: desk
+            data_type: varchar
+          - name: capitalunit
+            data_type: varchar
+          - name: strategy
+            data_type: varchar
+          - name: fund
+            data_type: varchar
+          - name: isin
+            data_type: varchar
+          - name: ticker
+            data_type: varchar
+          - name: instrumentname
+            data_type: varchar
+          - name: assettype
+            data_type: varchar
+          - name: investmenttype
+            data_type: varchar
+          - name: investmentsubtype
+            data_type: varchar
+          - name: dailyvaluestatus
+            data_type: varchar
+          - name: monthendvaluestatus
+            data_type: varchar
+          - name: endqty
+            data_type: number
+          - name: totalbookpldaily
+            data_type: number
+          - name: totalbookplmtd
+            data_type: number
+          - name: totalbookplytd
+            data_type: number
+          - name: endbooknav
+            data_type: number
