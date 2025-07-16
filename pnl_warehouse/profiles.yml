@@ -8,7 +8,7 @@ pnl_warehouse:
       database: BLUECREST_WAREHOUSE
       schema: DEV
       account: ''
-      user: ''
+      user: 'james.mcconville@bluecrestcapital.com'
     prod:
       type: snowflake
       role: ACCOUNTADMIN
