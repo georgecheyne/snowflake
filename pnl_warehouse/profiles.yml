@@ -7,13 +7,13 @@ pnl_warehouse:
       warehouse: PNL_WAREHOUSE_DBT_WH
       database: BLUECREST_WAREHOUSE
       schema: DEV
-      account: ''
-      user: ''
+      account: 'not needed'
+      user: 'not needed'
     prod:
       type: snowflake
       role: ACCOUNTADMIN
       warehouse: PNL_WAREHOUSE_DBT_WH
       database: BLUECREST_WAREHOUSE
       schema: PRD
-      account: ''
-      user: ''
+      account: 'not needed'
+      user: 'not needed'
