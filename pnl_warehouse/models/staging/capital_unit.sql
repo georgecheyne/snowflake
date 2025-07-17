@@ -2,14 +2,14 @@ with capunit
 as (
 	select desk
 		,capitalunit
-		,valuedate
+		,to_date(substr(valuedate, 1, 10), 'dd/MM/yyyy') as valuedate_parsed
 	from {{ source('pnl', 'transaction_value') }}
 	)
 	,distinct_capunit
 as (
 	select desk
 		,capitalunit
-		,MIN(valuedate) as startdate
+		,MIN(valuedate_parsed) as startdate
 	from capunit
 	group by desk
 		,capitalunit
@@ -21,8 +21,8 @@ select {{ dbt_utils.generate_surrogate_key([
 	,desk
 	,capitalunit
 	,startdate
-	,cast(lag(startdate, 1, '2050-01-01') over (
+	,lag(startdate, 1, '2050-01-01') over (
 			partition by desk
 			,capitalunit order by startdate desc
-			) as datetime) endDate
+			) endDate
 from distinct_capunit
