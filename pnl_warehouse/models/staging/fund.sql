@@ -1,5 +1,5 @@
 with raw_values as (
-select fund 
+select distinct fund 
 from {{ source('pnl', 'transaction_value') }}
 )
 

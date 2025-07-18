@@ -88,8 +88,8 @@ SELECT
     MONTHENDVALUESTATUS,
     ENDQTY,
     'General Ledger' as source,
-    'NAV' AS period,
-    'Pnl' as type,
+    'DTD' AS period,
+    'NAV' as type,
     ENDBOOKNAV AS VALUE
 FROM {{ source('pnl', 'transaction_value') }}
 
