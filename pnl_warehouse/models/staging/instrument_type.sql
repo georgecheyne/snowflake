@@ -22,8 +22,7 @@ as (
 	[
         'instrumentname', 
         'assettype', 
-        'investmenttype',
-        'startdate']
+        'investmenttype']
 	) }}
 as investment_type_key
 	,instrumentname

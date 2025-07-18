@@ -16,8 +16,7 @@ as (
 	)
 select {{ dbt_utils.generate_surrogate_key([
             'desk', 
-        'capitalunit', 
-        'startdate']) }} as capunit_key
+        'capitalunit']) }} as capunit_key
 	,desk
 	,capitalunit
 	,startdate

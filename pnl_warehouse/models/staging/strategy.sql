@@ -12,8 +12,7 @@ as (
 	group by strategy
 	)
 select {{ dbt_utils.generate_surrogate_key([
-        'strategy', 
-        'startdate']) }} as strategy_key
+        'strategy']) }} as strategy_key
 	,strategy
 	,startdate
 	,lag(startdate, 1, '2050-01-01') over (

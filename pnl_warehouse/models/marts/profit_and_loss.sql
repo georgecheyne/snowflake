@@ -97,9 +97,9 @@ FROM {{ source('pnl', 'transaction_value') }}
 
 select VALUEDATE as value_date,
         {{ dbt_utils.generate_surrogate_key(['FUND']) }} as fund_key,
-        {{ dbt_utils.generate_surrogate_key(['STRATEGY', 'VALUEDATE']) }} as strategy_key,
-        {{ dbt_utils.generate_surrogate_key(['DESK', 'CAPITALUNIT', 'VALUEDATE']) }} as capunit_key,
-        {{ dbt_utils.generate_surrogate_key(['INSTRUMENTNAME', 'ASSETTYPE', 'INVESTMENTTYPE', 'VALUEDATE']) }} as instrument_key,
+        {{ dbt_utils.generate_surrogate_key(['STRATEGY']) }} as strategy_key,
+        {{ dbt_utils.generate_surrogate_key(['DESK', 'CAPITALUNIT']) }} as capunit_key,
+        {{ dbt_utils.generate_surrogate_key(['INSTRUMENTNAME', 'ASSETTYPE', 'INVESTMENTTYPE']) }} as instrument_key,
         {{ dbt_utils.generate_surrogate_key(['period']) }} as period_key,
         {{ dbt_utils.generate_surrogate_key(['type']) }} as pnl_type_key,
         {{ dbt_utils.generate_surrogate_key(['source']) }} as source_key,
