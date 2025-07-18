@@ -3,7 +3,7 @@ as (
 	select instrumentname
 		,assettype
 		,investmenttype
-		,TO_DATE(SUBSTR(valuedate, 1, 10), 'dd/MM/yyyy') as parsed_valuedate
+		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
 	from {{ source('pnl', 'transaction_value') }}
 	)
 	,distinst_investment_type
@@ -22,7 +22,8 @@ as (
 	[
         'instrumentname', 
         'assettype', 
-        'investmenttype']
+        'investmenttype',
+        'startdate']
 	) }}
 as investment_type_key
 	,instrumentname

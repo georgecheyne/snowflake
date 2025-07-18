@@ -2,7 +2,7 @@ with capunit
 as (
 	select desk
 		,capitalunit
-		,to_date(substr(valuedate, 1, 10), 'dd/MM/yyyy') as valuedate_parsed
+		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as valuedate_parsed
 	from {{ source('pnl', 'transaction_value') }}
 	)
 	,distinct_capunit

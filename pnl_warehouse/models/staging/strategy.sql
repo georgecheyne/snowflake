@@ -1,7 +1,7 @@
 with strat
 as (
 	select strategy
-		,TO_DATE(SUBSTR(valuedate, 1, 10), 'dd/MM/yyyy') as parsed_valuedate
+		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
 	from {{ source('pnl', 'transaction_value') }}
 	)
 	,distinct_strat
