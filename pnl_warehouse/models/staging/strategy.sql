@@ -7,6 +7,10 @@ as (
     select strategy
 		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
 	from {{ source('pnl', 'daily_adjustment') }}
+    union
+    select strategy
+		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
+	from {{ source('pnl', 'permanent_adjustment') }}
 	)
 	,distinct_strat
 as (

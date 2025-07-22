@@ -11,7 +11,7 @@ SELECT
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    'Adjustments' as source,
+    'Daily Adjustment' as source,
     'DTD' AS period,
     'Pnl' as type,
     DAILYADJUSTMENT AS VALUE
@@ -30,8 +30,8 @@ SELECT
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    'Adjustments' as source,
-    'DTD' AS period,
+    'Daily Adjustment' as source,
+    'MTD' AS period,
     'Pnl' as type,
     MTDADJUSTMENT AS VALUE
 FROM {{ source('pnl', 'daily_adjustment') }}
@@ -49,8 +49,8 @@ SELECT
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    'Adjustments' as source,
-    'DTD' AS period,
+    'Daily Adjustment' as source,
+    'YTD' AS period,
     'Pnl' as type,
     YTDADJUSTMENT AS VALUE
 FROM {{ source('pnl', 'daily_adjustment') }}
@@ -68,7 +68,7 @@ SELECT
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    'Adjustments' as source,
+    'Daily Adjustment' as source,
     'DTD' AS period,
     'NAV' as type,
     NAVADJUSTMENT AS VALUE

@@ -9,6 +9,11 @@ as (
 		,adj.capitalunit
 		,to_date(adj.valuedate, 'DD/MM/YYYY HH24:MI:SS') as valuedate_parsed
     from {{ source('pnl', 'daily_adjustment') }} adj 
+    union 
+    select perm.desk
+		,perm.capitalunit
+		,to_date(perm.valuedate, 'DD/MM/YYYY HH24:MI:SS') as valuedate_parsed
+    from {{ source('pnl', 'permanent_adjustment') }} perm 
 )
 	,distinct_capunit as (
 	select desk
