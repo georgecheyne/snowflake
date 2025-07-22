@@ -16,4 +16,5 @@ snapshot-paths:
   - snapshots
 models:
   pnl_warehouse:
-    +materialized: view
+    +materialized: table
+    

@@ -5,6 +5,12 @@ as (
 		,investmenttype
 		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
 	from {{ source('pnl', 'transaction_value') }}
+    union
+    	select instrumentname
+		,assettype
+		,investmenttype
+		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
+	from {{ source('pnl', 'daily_adjustment') }}
 	)
 	,distinst_investment_type
 as (
