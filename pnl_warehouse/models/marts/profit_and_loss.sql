@@ -1,4 +1,5 @@
 with transaction_value_by_period as (
+
 SELECT 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,
     SOURCESYSTEM,
@@ -6,15 +7,86 @@ SELECT
     CAPITALUNIT,
     STRATEGY,
     FUND,
-    ISIN,
-    TICKER,
     INSTRUMENTNAME,
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    DAILYVALUESTATUS,
-    MONTHENDVALUESTATUS,
-    ENDQTY,
+    'Adjustments' as source,
+    'DTD' AS period,
+    'Pnl' as type,
+    DAILYADJUSTMENT AS VALUE
+FROM {{ source('pnl', 'daily_adjustment') }}
+
+UNION
+
+SELECT 
+    to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,
+    SOURCESYSTEM,
+    DESK,
+    CAPITALUNIT,
+    STRATEGY,
+    FUND,
+    INSTRUMENTNAME,
+    ASSETTYPE,
+    INVESTMENTTYPE,
+    INVESTMENTSUBTYPE,
+    'Adjustments' as source,
+    'DTD' AS period,
+    'Pnl' as type,
+    MTDADJUSTMENT AS VALUE
+FROM {{ source('pnl', 'daily_adjustment') }}
+
+UNION
+
+SELECT 
+    to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,
+    SOURCESYSTEM,
+    DESK,
+    CAPITALUNIT,
+    STRATEGY,
+    FUND,
+    INSTRUMENTNAME,
+    ASSETTYPE,
+    INVESTMENTTYPE,
+    INVESTMENTSUBTYPE,
+    'Adjustments' as source,
+    'DTD' AS period,
+    'Pnl' as type,
+    YTDADJUSTMENT AS VALUE
+FROM {{ source('pnl', 'daily_adjustment') }}
+
+UNION
+
+SELECT 
+    to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,
+    SOURCESYSTEM,
+    DESK,
+    CAPITALUNIT,
+    STRATEGY,
+    FUND,
+    INSTRUMENTNAME,
+    ASSETTYPE,
+    INVESTMENTTYPE,
+    INVESTMENTSUBTYPE,
+    'Adjustments' as source,
+    'DTD' AS period,
+    'NAV' as type,
+    NAVADJUSTMENT AS VALUE
+FROM {{ source('pnl', 'daily_adjustment') }}
+
+UNION
+
+SELECT 
+    to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,
+    SOURCESYSTEM,
+    DESK,
+    CAPITALUNIT,
+    STRATEGY,
+    FUND,
+    INSTRUMENTNAME,
+    ASSETTYPE,
+    INVESTMENTTYPE,
+    INVESTMENTSUBTYPE,
     'General Ledger' as source,
     'DTD' AS period,
     'Pnl' as type,
@@ -30,15 +102,10 @@ SELECT
     CAPITALUNIT,
     STRATEGY,
     FUND,
-    ISIN,
-    TICKER,
     INSTRUMENTNAME,
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    DAILYVALUESTATUS,
-    MONTHENDVALUESTATUS,
-    ENDQTY,
     'General Ledger' as source,
     'MTD' AS period,
     'Pnl' as type,
@@ -54,15 +121,10 @@ SELECT
     CAPITALUNIT,
     STRATEGY,
     FUND,
-    ISIN,
-    TICKER,
     INSTRUMENTNAME,
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    DAILYVALUESTATUS,
-    MONTHENDVALUESTATUS,
-    ENDQTY,
     'General Ledger' as source,
     'YTD' AS period,
     'Pnl' as type,
@@ -78,15 +140,10 @@ SELECT
     CAPITALUNIT,
     STRATEGY,
     FUND,
-    ISIN,
-    TICKER,
     INSTRUMENTNAME,
     ASSETTYPE,
     INVESTMENTTYPE,
     INVESTMENTSUBTYPE,
-    DAILYVALUESTATUS,
-    MONTHENDVALUESTATUS,
-    ENDQTY,
     'General Ledger' as source,
     'DTD' AS period,
     'NAV' as type,

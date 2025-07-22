@@ -2,6 +2,7 @@ sources:
   - name: pnl
     database: bluecrest_staging
     tables:
+      - name: daily_adjustment
       - name: transaction_value
         columns:
           - name: valuedate
