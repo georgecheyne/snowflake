@@ -2,7 +2,7 @@ with perm_adj as(
 
 select 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as value_date
-    ,CAPITALUNIT
+    ,CAPITALUNITREPORTINGNAME as CAPITALUNIT
     ,DESK
     ,STRATEGY
     ,FUND
@@ -11,10 +11,10 @@ select
     ,'Pnl' as type
     ,DAILYADJUSTMENT AS VALUE 
 from {{ source('pnl', 'permanent_adjustment') }}
-union
+union all
 select 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as value_date
-    ,CAPITALUNIT
+    ,CAPITALUNITREPORTINGNAME as CAPITALUNIT
     ,DESK
     ,STRATEGY
     ,FUND
@@ -23,10 +23,10 @@ select
     ,'Pnl' as type
     ,MTDADJUSTMENT AS VALUE 
 from {{ source('pnl', 'permanent_adjustment') }}
-union
+union all
 select 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as value_date
-    ,CAPITALUNIT
+    ,CAPITALUNITREPORTINGNAME as CAPITALUNIT
     ,DESK
     ,STRATEGY
     ,FUND
@@ -35,10 +35,10 @@ select
     ,'Pnl' as type
     ,YTDADJUSTMENT AS VALUE 
 from {{ source('pnl', 'permanent_adjustment') }}
-union
+union all
 select 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as value_date
-    ,CAPITALUNIT
+    ,CAPITALUNITREPORTINGNAME as CAPITALUNIT
     ,DESK
     ,STRATEGY
     ,FUND

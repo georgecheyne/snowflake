@@ -1,4 +1,9 @@
 sources:
+  - name: capital_allocation
+    database: bluecrest_staging
+    schema: capital_allocation
+    tables:
+      - name: capital_allocation
   - name: pnl
     database: bluecrest_staging
     tables:
