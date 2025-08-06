@@ -1,5 +1,9 @@
 with strat
 as (
+    select bundle as strategy
+		,ValueDate as parsed_valuedate
+	from {{ ref('arcesuim_export') }}
+    union
 	select strategy
 		,to_date(valuedate, 'DD/MM/YYYY HH24:MI:SS') as parsed_valuedate
 	from {{ source('pnl', 'transaction_value') }}

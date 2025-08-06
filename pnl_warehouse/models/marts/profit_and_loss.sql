@@ -1,4 +1,87 @@
 with transaction_value_by_period as (
+SELECT 
+    ValueDate as VALUEDATE,
+    'Arcesium' as SOURCESYSTEM,
+    'Unknown' as DESK,
+    businessunit as CAPITALUNIT,
+    bundle as STRATEGY,
+    'BC69' as FUND,
+    SecurityDescription AS INSTRUMENTNAME,
+    SfsType as ASSETTYPE,
+    SubType as INVESTMENTTYPE,
+    '' as INVESTMENTSUBTYPE,
+    'Final' as DAILYVALUESTATUS,
+	'NA' as MONTHENDVALUESTATUS,
+    'General Ledger' as source,
+    'DTD' AS period,
+    'NAV' as type,
+    DailyEndBookNav AS VALUE
+FROM {{ ref('arcesuim_export') }}
+
+union all
+
+SELECT 
+    ValueDate as VALUEDATE,
+    'Arcesium' as SOURCESYSTEM,
+    'Unknown' as DESK,
+    businessunit as CAPITALUNIT,
+    bundle as STRATEGY,
+    'BC69' as FUND,
+    SecurityDescription AS INSTRUMENTNAME,
+    SfsType as ASSETTYPE,
+    SubType as INVESTMENTTYPE,
+    '' as INVESTMENTSUBTYPE,
+    'Final' as DAILYVALUESTATUS,
+	'NA' as MONTHENDVALUESTATUS,
+    'General Ledger' as source,
+    'DTD' AS period,
+    'PnL' as type,
+    Dtd AS VALUE
+FROM {{ ref('arcesuim_export') }}
+
+union all
+
+SELECT 
+   ValueDate as VALUEDATE,
+    'Arcesium' as SOURCESYSTEM,
+    'Unknown' as DESK,
+    businessunit as CAPITALUNIT,
+    bundle as STRATEGY,
+    'BC69' as FUND,
+    SecurityDescription AS INSTRUMENTNAME,
+    SfsType as ASSETTYPE,
+    SubType as INVESTMENTTYPE,
+    '' as INVESTMENTSUBTYPE,
+    'Final' as DAILYVALUESTATUS,
+	'NA' as MONTHENDVALUESTATUS,
+    'General Ledger' as source,
+    'MTD' AS period,
+    'PnL' as type,
+    Mtd AS VALUE
+FROM {{ ref('arcesuim_export') }}
+
+union all
+
+SELECT 
+   ValueDate as VALUEDATE,
+    'Arcesium' as SOURCESYSTEM,
+    'Unknown' as DESK,
+    businessunit as CAPITALUNIT,
+    bundle as STRATEGY,
+    'BC69' as FUND,
+    SecurityDescription AS INSTRUMENTNAME,
+    SfsType as ASSETTYPE,
+    SubType as INVESTMENTTYPE,
+    '' as INVESTMENTSUBTYPE,
+    'Final' as DAILYVALUESTATUS,
+	'NA' as MONTHENDVALUESTATUS,
+    'General Ledger' as source,
+    'YTD' AS period,
+    'PnL' as type,
+    Ytd AS VALUE
+FROM {{ ref('arcesuim_export') }}
+
+UNION ALL
 
 SELECT 
     to_date(VALUEDATE, 'DD/MM/YYYY HH24:MI:SS') as VALUEDATE,

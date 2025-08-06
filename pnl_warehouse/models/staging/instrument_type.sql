@@ -1,5 +1,11 @@
 with instrument_type
 as (
+    select SecurityDescription as instrumentname
+        ,SfsType as assettype
+        ,SubType as investmenttype
+        ,ValueDate as parsed_valuedate
+    from {{ ref('arcesuim_export') }}
+    union
 	select instrumentname
 		,assettype
 		,investmenttype

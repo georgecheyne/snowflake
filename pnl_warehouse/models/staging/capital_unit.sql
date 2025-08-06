@@ -1,5 +1,10 @@
 with capunit
 as (
+    select 'Unknown' as desk,
+            BusinessUnit as capitalunit,
+            ValueDate as valuedate_parsed,
+            from {{ ref('arcesuim_export')}}
+    union
 	select tv.desk
 		,tv.capitalunit
 		,to_date(tv.valuedate, 'DD/MM/YYYY HH24:MI:SS') as valuedate_parsed
