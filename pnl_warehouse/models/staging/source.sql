@@ -3,7 +3,7 @@ with raw_values as (
     union
     select 'Daily Adjustment' as source
     union 
-    select 'Permannent Adjustment' as source
+    select 'Permanent Adjustment' as source
 )
 
 select {{ dbt_utils.generate_surrogate_key([

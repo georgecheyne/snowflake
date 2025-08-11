@@ -1,4 +1,25 @@
 sources:
+  - name: arcesium
+    database: arcesium_rep
+    schema: openspec
+    tables: 
+     - name: book
+     - name: bundle
+     - name: bundle_group
+     - name: business_unit
+     - name: custodian_account
+     - name: derived__bundle_account_balance
+     - name: derived__bundle_cash_activity
+     - name: derived__bundle_je_lines
+     - name: derived__bundle_open_tax_lot
+     - name: derived__bundle_pnl_detail
+     - name: derived__pnl_run_info
+     - name: security_common
+  - name: capital_allocation
+    database: bluecrest_staging
+    schema: capital_allocation
+    tables:
+      - name: capital_allocation
   - name: pnl
     database: bluecrest_staging
     tables:
